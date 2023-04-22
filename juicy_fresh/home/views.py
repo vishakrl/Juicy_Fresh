@@ -43,6 +43,7 @@ def registersub(request):
         else:
           user=User.objects.create_user(first_name=fname,last_name=lname,username=uname,email=email,password=pword)
           user.save();
+          auth.login(request,user)
           return redirect("/")
          
     else:
