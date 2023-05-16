@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'home',
+    'product'
 ]
 
 MIDDLEWARE = [
@@ -76,7 +78,7 @@ WSGI_APPLICATION = 'juicy_fresh.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mywork',
+        'NAME': 'mywork2',
         'USER' : 'root',
         'PASSWORD' : 'vishak14031995',
         'HOST' : 'localhost',
@@ -127,3 +129,6 @@ STATIC_ROOT=os.path.join(BASE_DIR,'backups')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+#media
+MEDIA_URL="/media/"
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')

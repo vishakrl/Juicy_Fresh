@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search</title>
+    <style>
+        .searchbox{
+            background-color: rgba(223, 222, 233, 0.829);
+            width: 400px;
+            margin-top: 170px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .searchbox input{
+            
+            background-color: rgb(229, 237, 241);
+            width: 200px;
+            height: 25px;
+            padding-left: 20px;
+        }
+        .searchbox button{
+            background-color: rgb(210, 115, 131);
+        }
+            
+
+        
+    </style>
+</head>
+<body background="{% static 'images/cherry1.jpg' %}">
+    <title>search</title>
+    <form action="searchsub/" method="GET">
+        
+<center>
+    <div class="searchbox">
+        <input type="text" placeholder="search here" name="item">
+        <button type="SUBMIT">search</button>
+    </center>
+    </div>
+    
+    </form>    
+    
+</body>
+</html>

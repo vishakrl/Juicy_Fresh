@@ -51,12 +51,12 @@
           </div>
           <div class="carousel-item">
             <div class="img-box">
-              <img src="{% static 'images/slider-img.jpg' %}" alt="">
+              <img src="{% static 'images/fruits.2.jpg' %}" alt="" height="538px" width="200px">
             </div>
           </div>
           <div class="carousel-item">
             <div class="img-box">
-              <img src="{% static 'images/slider-img.jpg' %}" alt="">
+              <img src="{% static 'images/fruits.5.jpg' %}" alt="" height="538px" width="200px">
             </div>
           </div>
         </div>
@@ -93,19 +93,28 @@
                 <li class="nav-item">
                   <a class="nav-link" href="fruit.html">Our Fruit </a>
                 </li>
+                {% if user.is_authenticated %}
                 <li class="nav-item">
-                  {% if user.is_authenticated %}
+                 
                   <a class="nav-link" href="testimonial.html">{{user.username}}</a>
-                  {% endif %}
+                  
+
                 </li>
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="logout/">Logout</a>
+                </li>
+                {% else %}
                 <li class="nav-item">
                   <a class="nav-link" href="register/">Register</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="login/">Login</a>
+                  
                 </li>
+                {% endif %}
               </ul>
-              <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
+              <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0" action="search/">
                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
               </form>
             </div>
@@ -190,72 +199,21 @@
     <div class="container-fluid">
 
       <div class="fruit_container">
+        {% for i in data %}
         <div class="box">
-          <img src="{% static 'images/f-1.jpg' %}" alt="">
+          <img src="{{i.img.url}}" alt="">
+         
           <div class="link_box">
             <h5>
-              Orange
+              {{i.name}}
             </h5>
-            <a href="">
+            <a href="product/?id={{i.id}}">
               Buy Now
             </a>
           </div>
         </div>
-        <div class="box">
-          <img src="{% static 'images/f-2.jpg' %}" alt="">
-          <div class="link_box">
-            <h5>
-              Blueberry
-            </h5>
-            <a href="">
-              Buy Now
-            </a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="{% static 'images/f-3.jpg' %}" alt="">
-          <div class="link_box">
-            <h5>
-              Banana
-            </h5>
-            <a href="">
-              Buy Now
-            </a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="{% static 'images/f-4.jpg' %}" alt="">
-          <div class="link_box">
-            <h5>
-              Apple
-            </h5>
-            <a href="">
-              Buy Now
-            </a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="{% static 'images/f-5.jpg' %}" alt="">
-          <div class="link_box">
-            <h5>
-              Mango
-            </h5>
-            <a href="">
-              Buy Now
-            </a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="{% static 'images/f-6.jpg' %}" alt="">
-          <div class="link_box">
-            <h5>
-              Strawberry
-            </h5>
-            <a href="">
-              Buy Now
-            </a>
-          </div>
-        </div>
+        {% endfor %}
+        
       </div>
     </div>
   </section>
@@ -278,11 +236,11 @@
           <div class="carousel-item active">
             <div class="client_container layout_padding-top">
               <div class="img-box">
-                <img src="{% static 'images/client-img.jpg' %}" alt="">
+                <img src="{% static 'images/' %}" alt="">
               </div>
               <div class="detail-box">
                 <h5>
-                  Rohan Densil
+                  {{name}}
                 </h5>
                 <p>
                   <img src="{% static 'images/left-quote.png' %}" alt="">
