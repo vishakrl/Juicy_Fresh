@@ -6,14 +6,14 @@ from product.models import fruits
 # Create your views here.
 
 def index(request):
-    obj=fruits.objects.all()
-    if 'username' in request.COOKIES:
-
-        u=request.COOKIES['username']
+    if request.method=="POST":
+        vl=request.POST['item']
+        obj=fruits.objects.filter(name__istartswith=vl)
     else:
-        u=''
+        obj=fruits.objects.all()
+ 
     print('hai',obj)
-    return render(request,"index.html",{'data':obj,'name':u})
+    return render(request,"index.html",{'data':obj})
 
 
 

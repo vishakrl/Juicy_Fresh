@@ -1,5 +1,7 @@
 from django.shortcuts import render,redirect
 from .  models import fruits,comment
+from django.http import JsonResponse
+
 
 # Create your views here.
 
@@ -42,7 +44,18 @@ def like(request):
     return redirect('/product/?id='+str(obj[0].pro_id_id)) 
     
 
+def autoc(request):
+    
+    if 'term' in request.GET:
+        data=request.GET['term']
+        obj=fruits.objects.filter(name__istartswith=data)
+        li=[]
+        for i in obj:
+            li.append(i.name)    
 
+        print(li)
+        return JsonResponse(li,safe=False)
+    return render(request,'text.html')
 
 
 
