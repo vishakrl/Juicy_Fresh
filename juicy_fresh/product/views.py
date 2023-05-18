@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .  models import fruits,comment
 from django.http import JsonResponse
+from django.core.cache import cache
 
 
 # Create your views here.
@@ -22,6 +23,21 @@ def about(request):
         rct=[]
     request.session.modified=True
     return render(request,"about.html",{'data':obj,'rec':rct})
+
+def about2(request):
+     iname=request.GET['id']
+     if cache.get(iname):
+         print("DATA FROM CACHE")
+         obj=cache.get(iname)
+     else:
+        print("DATA FROM DATABASE")
+        obj=fruits.objects.get(id=iname)
+        cache.set(iname,obj)
+        
+
+     return render(request,"about.html",{'data':obj})
+    
+
 
 
  
@@ -46,7 +62,7 @@ def like(request):
 
 def autoc(request):
     
-    if 'term' in request.GET:
+    if 'term' in request.GET:  
         data=request.GET['term']
         obj=fruits.objects.filter(name__istartswith=data)
         li=[]
